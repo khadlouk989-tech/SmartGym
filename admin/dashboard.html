@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | SmartGym</title>
+  <link rel="stylesheet" href="../admin.css" />
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <div class="admin-logo">SG</div>
+        <span>SmartGym Admin</span>
+      </div>
+      <nav>
+        <button class="sidebar-link active" data-section="overview">Overview</button>
+        <button class="sidebar-link" data-section="members">Members</button>
+        <button class="sidebar-link" data-section="payments">Payments</button>
+        <button class="sidebar-link" data-section="reports">Reports</button>
+        <button class="sidebar-link" data-section="settings">Settings</button>
+      </nav>
+      <button class="logout-btn" id="logoutBtn">Log out</button>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Private Admin Area</p>
+          <h1 id="pageTitle">Overview</h1>
+        </div>
+        <div class="profile-box">
+          <div class="profile-avatar">A</div>
+          <div>
+            <p>Aymen</p>
+            <span>Administrator</span>
+          </div>
+        </div>
+      </header>
+      <section class="admin-content" id="overview">
+        <div class="stats-grid">
+          <article class="stat-card">
+            <p>Total Members</p>
+            <strong>1,284</strong>
+          </article>
+          <article class="stat-card">
+            <p>Active Plans</p>
+            <strong>972</strong>
+          </article>
+          <article class="stat-card">
+            <p>Pending Payments</p>
+            <strong>16</strong>
+          </article>
+          <article class="stat-card">
+            <p>Reservations Today</p>
+            <strong>38</strong>
+          </article>
+        </div>
+        <div class="panel-grid">
+          <div class="panel-card">
+            <h2>Weekly attendance</h2>
+            <div class="panel-placeholder">Chart placeholder</div>
+          </div>
+          <div class="panel-card">
+            <h2>Recent activity</h2>
+            <ul class="activity-list">
+              <li>New subscription started by Sara D.</li>
+              <li>Payment received from Omar B.</li>
+              <li>New booking for Yoga Flow.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="admin-content hidden" id="members">
+        <div class="section-header">
+          <h2>Members</h2>
+          <button class="pill-btn" onclick="showAlert('Member controls are not yet connected.')">Manage Members</button>
+        </div>
+        <div class="table-card">
+          <table>
+            <thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Sara Daoud</td><td>sara@gym.com</td><td>Elite</td><td>Active</td></tr>
+              <tr><td>Omar Bensaid</td><td>omar@gym.com</td><td>Pro</td><td>Active</td></tr>
+              <tr><td>Leila Farah</td><td>leila@gym.com</td><td>Starter</td><td>Expired</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="admin-content hidden" id="payments">
+        <div class="section-header">
+          <h2>Payments</h2>
+          <button class="pill-btn" onclick="showAlert('Payment flows will connect to backend later.')">Review Payments</button>
+        </div>
+        <div class="table-card">
+          <table>
+            <thead><tr><th>Invoice</th><th>Member</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>INV-2026-001</td><td>Sara D.</td><td>€89</td><td>Paid</td></tr>
+              <tr><td>INV-2026-002</td><td>Omar B.</td><td>€49</td><td>Pending</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="admin-content hidden" id="reports">
+        <div class="section-header">
+          <h2>Reports</h2>
+          <button class="pill-btn" onclick="showAlert('Report export is coming soon.')">Export</button>
+        </div>
+        <div class="panel-card">
+          <h3>Revenue trend</h3>
+          <div class="panel-placeholder">Report chart placeholder</div>
+        </div>
+      </section>
+      <section class="admin-content hidden" id="settings">
+        <div class="section-header">
+          <h2>Settings</h2>
+          <button class="pill-btn" onclick="showAlert('Settings will save once backend is connected.')">Save</button>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <label>Gym name</label>
+            <input value="SmartGym" />
+          </div>
+          <div class="settings-card">
+            <label>Admin email</label>
+            <input value="admin@gmail.com" disabled />
+          </div>
+          <div class="settings-card full-width">
+            <label>Support contact</label>
+            <input value="contact@smartgym.fr" />
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../admin.js"></script>
+</body>
+</html>
