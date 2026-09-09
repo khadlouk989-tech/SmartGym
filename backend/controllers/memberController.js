@@ -2,15 +2,25 @@ const { validationResult } = require('express-validator');
 const prisma = require('../config/db');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../utils/asyncHandler');
-
+const bcrypt = require('bcrypt');
 exports.createMember = asyncHandler(async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(new ErrorResponse(errors.array().map(err => err.msg).join(', '), 400));
   }
 
-  const { firstName, lastName, email, phone, birthDate, gender, address, history, status } = req.body;
-  const existing = await prisma.user.findUnique({ where: { email } });
+const {
+  firstName,
+  lastName,
+  email,
+  phone,
+  birthDate,
+  gender,
+  address,
+  history,
+  status,
+  password
+} = req.body;  const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
     return next(new ErrorResponse('Email already exists', 400));
   }
@@ -19,12 +29,14 @@ exports.createMember = asyncHandler(async (req, res, next) => {
   if (!role) {
     return next(new ErrorResponse('Member role not found', 500));
   }
+const hashedPassword = await bcrypt.hash(password, 10);
 
   const user = await prisma.user.create({
     data: {
       firstName,
       lastName,
       email,
+      password: hashedPassword,
       phone,
       birthDate: birthDate ? new Date(birthDate) : null,
       gender,
@@ -41,22 +53,50 @@ exports.createMember = asyncHandler(async (req, res, next) => {
 
 exports.getMembers = asyncHandler(async (req, res) => {
   const members = await prisma.member.findMany({
-    include: { user: { include: { role: true } }, subscriptions: true, reservations: true }
+    include: {
+      user: {
+        include: {
+          role: true,
+          subscriptions: true,
+          reservations: true
+        }
+      }
+    }
   });
-  res.status(200).json({ success: true, count: members.length, data: members });
+
+  res.status(200).json({
+    success: true,
+    count: members.length,
+    data: members
+  });
 });
 
 exports.getMember = asyncHandler(async (req, res, next) => {
   const id = parseInt(req.params.id, 10);
+
   const member = await prisma.member.findUnique({
     where: { id },
-    include: { user: { include: { role: true } }, subscriptions: true, reservations: true }
+    include: {
+      user: {
+        include: {
+          role: true,
+          subscriptions: true,
+          reservations: true
+        }
+      }
+    }
   });
+
   if (!member) {
     return next(new ErrorResponse('Member not found', 404));
   }
-  res.status(200).json({ success: true, data: member });
+
+  res.status(200).json({
+    success: true,
+    data: member
+  });
 });
+
 
 exports.updateMember = asyncHandler(async (req, res, next) => {
   const id = parseInt(req.params.id, 10);

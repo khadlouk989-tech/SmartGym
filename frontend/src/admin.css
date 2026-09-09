@@ -1,0 +1,749 @@
+/* =========================================================
+   SMARTGYM ADMIN
+   Scoped styles — no conflict with the public website
+   ========================================================= */
+
+.admin-app {
+  color-scheme: dark;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #f7f7f7;
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(255, 107, 0, 0.09),
+      transparent 28%
+    ),
+    #080808;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+}
+
+.admin-app *,
+.admin-app *::before,
+.admin-app *::after {
+  box-sizing: border-box;
+}
+
+.admin-app button,
+.admin-app input {
+  font: inherit;
+}
+
+.admin-app button {
+  cursor: pointer;
+}
+
+.admin-app h1,
+.admin-app h2,
+.admin-app h3,
+.admin-app p,
+.admin-app ul {
+  margin-top: 0;
+}
+
+.admin-app a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.admin-app .auth-shell {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.admin-app .auth-card {
+  width: min(430px, 100%);
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: rgba(16, 16, 16, 0.96);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.4);
+}
+
+.admin-app .auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.admin-app .auth-logo,
+.admin-app .admin-logo {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff6b00, #ffb03b);
+  color: #0d0d0d;
+  font-weight: 800;
+}
+
+.admin-app .auth-brand h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.admin-app .auth-brand p {
+  margin: 4px 0 0;
+  color: #a9a9b1;
+}
+
+.admin-app .auth-form {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-app .auth-form label {
+  color: #b8b8c0;
+  font-size: 0.9rem;
+}
+
+.admin-app .auth-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.035);
+  color: #fff;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.admin-app .auth-form input:focus {
+  border-color: rgba(255, 107, 0, 0.6);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.admin-app .auth-form button {
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff6b00, #ffb03b);
+  color: #0d0d0d;
+  font-weight: 800;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-app .auth-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(255, 107, 0, 0.2);
+}
+
+.admin-app .auth-error {
+  margin: 0;
+  min-height: 20px;
+  color: #ff6b6b;
+  font-size: 0.92rem;
+}
+
+/* =========================================================
+   MAIN ADMIN LAYOUT
+   ========================================================= */
+
+.admin-app .admin-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  align-items: stretch;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.admin-app .admin-sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 24px 16px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 107, 0, 0.035),
+      transparent 35%
+    ),
+    #101010;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Brand */
+
+.admin-app .admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  margin-bottom: 28px;
+  padding: 4px 8px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.admin-app .admin-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+}
+
+.admin-app .admin-brand span {
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Navigation */
+
+.admin-app nav {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.admin-app .sidebar-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  color: #9999a1;
+  text-align: left;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-app .sidebar-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.045);
+  transform: translateX(2px);
+}
+
+.admin-app .sidebar-link.active {
+  color: #fff;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 107, 0, 0.22),
+      rgba(255, 107, 0, 0.07)
+    );
+  border-color: rgba(255, 107, 0, 0.16);
+}
+
+.admin-app .sidebar-link.active::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 0 4px 4px 0;
+  background: #ff6b00;
+}
+
+/* Logout */
+
+.admin-app .logout-btn {
+  width: 100%;
+  margin-top: auto;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 107, 0, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #ff9f6d;
+  text-align: left;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.admin-app .logout-btn:hover {
+  background: rgba(255, 107, 0, 0.1);
+  color: #ffb03b;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.admin-app .admin-main {
+  min-width: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px 40px 48px;
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(255, 107, 0, 0.055),
+      transparent 28%
+    ),
+    #080808;
+}
+
+/* Header */
+
+.admin-app .admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.admin-app .eyebrow {
+  margin: 0 0 8px;
+  color: #ff9d5c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.admin-app .admin-header h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* Profile */
+
+.admin-app .profile-box {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px 14px 10px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.admin-app .profile-avatar {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #ff6b00, #ff9a3d);
+  color: #0d0d0d;
+  font-weight: 800;
+}
+
+.admin-app .profile-box p {
+  margin: 0 0 3px;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.admin-app .profile-box span {
+  color: #9f9fa7;
+  font-size: 0.82rem;
+}
+
+/* =========================================================
+   DASHBOARD CONTENT
+   ========================================================= */
+
+.admin-app .admin-content {
+  width: 100%;
+}
+
+/* Stats */
+
+.admin-app .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.admin-app .stat-card {
+  position: relative;
+  min-width: 0;
+  min-height: 150px;
+  padding: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    );
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.admin-app .stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 107, 0, 0.22);
+}
+
+.admin-app .stat-card::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  bottom: -35px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 107, 0, 0.06);
+}
+
+.admin-app .stat-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  color: #a9a9b1;
+  font-size: 0.88rem;
+}
+
+.admin-app .stat-card strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: #fff;
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Panels */
+
+.admin-app .panel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: 20px;
+}
+
+.admin-app .panel-card,
+.admin-app .table-card,
+.admin-app .settings-card {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.admin-app .panel-card {
+  padding: 24px;
+}
+
+.admin-app .panel-card h2,
+.admin-app .panel-card h3 {
+  margin: 0 0 18px;
+  color: #fff;
+  font-weight: 750;
+}
+
+/* Placeholder */
+
+.admin-app .panel-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  padding: 20px;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.018);
+  color: #8f8f98;
+}
+
+/* Recent activity */
+
+.admin-app .activity-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.admin-app .activity-list li {
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.045);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #d7d7dc;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.admin-app .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.admin-app .section-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.45rem;
+}
+
+/* Button */
+
+.admin-app .pill-btn {
+  width: auto;
+  padding: 11px 17px;
+  border: 1px solid rgba(255, 107, 0, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 107, 0, 0.12);
+  color: #ffb477;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-app .pill-btn:hover {
+  background: rgba(255, 107, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.admin-app .table-card {
+  padding: 6px;
+  overflow-x: auto;
+}
+
+.admin-app .table-card table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+}
+
+.admin-app .table-card th,
+.admin-app .table-card td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+  color: #d8d8dd;
+  text-align: left;
+}
+
+.admin-app .table-card th {
+  color: #92929b;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.admin-app .table-card tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.admin-app .table-card tbody tr {
+  transition: background 0.18s ease;
+}
+
+.admin-app .table-card tbody tr:hover {
+  background: rgba(255, 107, 0, 0.035);
+}
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+.admin-app .settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-app .settings-card {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+}
+
+.admin-app .settings-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.admin-app .settings-card label {
+  color: #aaaab2;
+  font-size: 0.88rem;
+}
+
+.admin-app .settings-card input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.025);
+  color: #fff;
+}
+
+.admin-app .settings-card input:focus {
+  border-color: rgba(255, 107, 0, 0.5);
+}
+
+.admin-app .settings-card input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.admin-app .auth-error {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 80, 80, 0.15);
+  border-radius: 12px;
+  background: rgba(255, 80, 80, 0.06);
+}
+
+/* =========================================================
+   UTILITY
+   ========================================================= */
+
+.admin-app .hidden {
+  display: none;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1180px) {
+  .admin-app .admin-shell {
+    grid-template-columns: 220px minmax(0, 1fr);
+  }
+
+  .admin-app .admin-sidebar {
+    width: 220px;
+  }
+
+  .admin-app .admin-main {
+    padding: 28px;
+  }
+
+  .admin-app .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-app .panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .admin-app .admin-shell {
+    display: block;
+  }
+
+  .admin-app .admin-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 14px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .admin-app .admin-brand {
+    margin-bottom: 12px;
+    padding-bottom: 14px;
+  }
+
+  .admin-app nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 3px;
+  }
+
+  .admin-app .sidebar-link {
+    width: auto;
+    min-width: max-content;
+  }
+
+  .admin-app .sidebar-link.active::before {
+    display: none;
+  }
+
+  .admin-app .logout-btn {
+    margin-top: 12px;
+  }
+
+  .admin-app .admin-main {
+    padding: 22px 16px 35px;
+  }
+
+  .admin-app .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .admin-app .profile-box {
+    width: 100%;
+  }
+
+  .admin-app .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-app .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-app .settings-card.full-width {
+    grid-column: auto;
+  }
+
+  .admin-app .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-app .pill-btn {
+    width: 100%;
+  }
+}
